@@ -4,4 +4,11 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <context-param>
+    <description>Location to store uploaded file</description>
+    <param-name>file-upload</param-name>
+    <param-value>
+         /media/DATA/bilingual/data/
+     </param-value>
+  </context-param>
 </web-app>
