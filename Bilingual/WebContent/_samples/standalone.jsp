@@ -15,6 +15,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	<title>Creating CKEditor Instances &mdash; CKEditor Sample</title>
 	<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
 	<link type="text/css" rel="stylesheet" href="../ckeditor/_samples/sample.css" />
+	<script src="//cdn.ckeditor.com/4.5.9/full/ckeditor.js"></script>
 </head>
 <body>
 	<h1 class="samples">
