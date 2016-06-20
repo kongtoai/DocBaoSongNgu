@@ -20,7 +20,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-@WebServlet("/damuploadfile")
+@WebServlet("/xxx")
 public class DamUploadFile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
