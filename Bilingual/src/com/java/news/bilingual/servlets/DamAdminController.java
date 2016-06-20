@@ -1,4 +1,4 @@
-package com.mkyong.web.controller;
+package com.java.news.bilingual.servlets;
 
 import java.io.File;
 import java.util.Iterator;

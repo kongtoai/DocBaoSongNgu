@@ -1,4 +1,4 @@
-package com.mkyong.web.controller;
+package com.java.news.bilingual.servlets;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
