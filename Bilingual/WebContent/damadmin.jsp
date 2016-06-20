@@ -2,17 +2,22 @@
 <%@page import="java.util.Arrays"%>
 <%@page import="java.io.File"%>
 <%@ taglib uri="http://ckeditor.com" prefix="ckeditor"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>File Uploading Form</title>
+<!-- <script src="//cdn.ckeditor.com/4.5.9/full/ckeditor.js"></script> -->
 </head>
 <body>
+	<c:if test="${not empty msg }">
+		<h3>${msg }</h3>
+	</c:if>
 	<h3>File Upload:</h3>
 	Select a file to upload:
 	<br />
-	<form action="damuploadfile" method="post" enctype="multipart/form-data">
+	<form action="xxx" method="post" enctype="multipart/form-data">
 		<input type="file" name="file" size="50" multiple="true" /> <br /> <input type="submit" value="Upload File" />
 	</form>
 	<hr>
@@ -47,7 +52,7 @@
 			out.println("<br>" + file);
 		}
 	%>
-	<form action="_samples/assets/sample_posteddata.jsp" method="post">
+	<form action="" method="post">
 		<p>
 			<label for="editor1"> Editor 1:</label>
 			<textarea cols="80" id="editor1" name="editor1" rows="10"></textarea>
