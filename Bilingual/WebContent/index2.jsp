@@ -6,6 +6,7 @@
 <html>
 <head>
 <title>Creating CKEditor Instances &mdash; CKEditor Sample</title>
+<script src="//cdn.ckeditor.com/4.5.9/full/ckeditor.js"></script>
 </head>
 <body>
 
