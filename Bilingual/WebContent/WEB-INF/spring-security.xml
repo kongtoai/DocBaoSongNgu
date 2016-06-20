@@ -6,9 +6,12 @@
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<!-- enable use-expressions -->
+<!-- 	<http pattern="/xxx**" security="none"/>  -->
 	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
-
+<!-- 		<intercept-url pattern="/damadmin**" access="hasRole('ROLE_USER')" /> -->
+<!-- 		<intercept-url pattern="/damuploadfile**" access="hasRole('ROLE_USER')" /> -->
+		
 		<!-- access denied page -->
 		<access-denied-handler error-page="/403" />
 		<form-login login-page="/login" default-target-url="/welcome"
