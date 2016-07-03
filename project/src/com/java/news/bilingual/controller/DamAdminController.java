@@ -1,48 +1,32 @@
-package com.java.news.bilingual.servlets;
+package com.java.news.bilingual.controller;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.jws.soap.InitParam;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
-@WebServlet("/xxx")
-public class DamUploadFile extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
-	private ServletConfig config;
+@Controller
+@RequestMapping(value = "/admin")
+public class DamAdminController {
 
-	@Override
-	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
-		this.config = config;
-	}
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
+	@RequestMapping(value = "/damuploadfile", method = RequestMethod.POST)
+	public ModelAndView damupload(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView model = new ModelAndView();
 		File file;
 		int maxFileSize = 50000 * 1024;
 		int maxMemSize = 50000 * 1024;
-		String filePath = config.getServletContext().getRealPath("/assets");
+		String filePath = request.getServletContext().getRealPath("/assets");
 
 		// Verify the content type
 		String contentType = request.getContentType();
@@ -65,11 +49,6 @@ public class DamUploadFile extends HttpServlet {
 				// Process the uploaded file items
 				Iterator i = fileItems.iterator();
 
-				out.println("<html>");
-				out.println("<head>");
-				out.println("<title>JSP File upload</title>");
-				out.println("</head>");
-				out.println("<body>");
 				while (i.hasNext()) {
 					FileItem fi = (FileItem) i.next();
 					if (!fi.isFormField()) {
@@ -85,24 +64,28 @@ public class DamUploadFile extends HttpServlet {
 							file = new File(filePath + "/" + fileName.substring(fileName.lastIndexOf("\\") + 1));
 						}
 						fi.write(file);
-						out.println("Uploaded Filename: " + filePath  + "/" + fileName + "<br>");
 					}
 				}
-				out.println("</body>");
-				out.println("</html>");
 			} catch (Exception ex) {
 				System.out.println(ex);
+				model.addObject("msg", "Upload file Failed.");
+				model.setViewName("damadmin");
+				return model;
 			}
-		} else {
-			out.println("<html>");
-			out.println("<head>");
-			out.println("<title>Servlet upload</title>");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<p>No file uploaded</p>");
-			out.println("</body>");
-			out.println("</html>");
 		}
+		
+		model.addObject("msg", "Upload file successfully.");
+		model.setViewName("damadmin");
+		return model;
 	}
+	
+
+	@RequestMapping(value = "/damadmin", method = RequestMethod.GET)
+	public String damadmin(HttpServletRequest request, HttpServletResponse response) {
+		
+		return "damadmin";
+	}
+	
+	
 
 }

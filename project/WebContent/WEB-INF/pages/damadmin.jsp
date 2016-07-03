@@ -17,8 +17,8 @@
 	<h3>File Upload:</h3>
 	Select a file to upload:
 	<br />
-	<form action="damuploadfile" method="post" enctype="multipart/form-data">
-		<input type="file" name="file" size="50" multiple="true" /> <br /> <input type="submit" value="Upload File" /> <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	<form action="damuploadfile?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
+		<input type="file" name="file" size="50" multiple="true" /> <br /> <input type="submit" value="Upload File" />
 	</form>
 	<hr>
 
@@ -38,7 +38,7 @@
 
 			for (int i = 0; i < fileObjects.length; i++) {
 				String path = fileObjects[i].getAbsolutePath();
-				String fname = "assets" + File.separator + path.substring(path.lastIndexOf(File.separator) + 1);
+				String fname = "..\\assets" + File.separator + path.substring(path.lastIndexOf(File.separator) + 1);
 
 				if (!fileObjects[i].isDirectory()) {
 					out.println("<br><img width=\"300px\" height=\"200px\" src=\"" + fname + "\"/>");
@@ -60,6 +60,6 @@
 			<input type="submit" value="Submit" />
 		</p>
 	</form>
-	<ckeditor:replaceAll basePath="ckeditor/" />
+	<ckeditor:replaceAll basePath="../ckeditor/" />
 </body>
 </html>

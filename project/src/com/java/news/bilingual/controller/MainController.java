@@ -1,4 +1,4 @@
-package com.java.news.bilingual.servlets;
+package com.java.news.bilingual.controller;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
